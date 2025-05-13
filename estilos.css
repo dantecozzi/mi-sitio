@@ -1,0 +1,791 @@
+@charset "utf-8";
+/* Documento CSS Unificado V10 - Resultados Lista Unificados - */
+
+/* * 1. Reset General y Estilos Base                                        * */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Asegura altura mínima para todas las páginas */
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0; /* Fondo por defecto para páginas sin imagen */
+    scroll-behavior: smooth;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+.container {
+    flex: 1;
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    background-color: transparent; /* Asegurar transparencia general si no se sobreescribe */
+    border-radius: 0;
+    overflow: hidden; /* Evitar desbordes inesperados */
+}
+
+/* * 2. Encabezado (Header) - Nav Centrada                                  * */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #000;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    flex-shrink: 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+                 0 0 20px rgba(255, 255, 255, 0.2),
+                 0 0 30px rgba(255, 255, 255, 0.1);
+    position: relative;
+    line-height: 1.2;
+    font-stretch: normal;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    animation: glow 2s linear infinite;
+}
+@keyframes glow {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+.icon {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 0 5px 15px;
+    flex-shrink: 0;
+}
+
+/* * 3. Navegación Principal (Integrada y Centrada en Header)               * */
+.header .main-nav {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    gap: 10px;
+}
+.header .main-nav li {
+    margin: 0;
+    display: flex;
+}
+.header .main-nav a {
+    color: #eee;
+    text-decoration: none;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.95em;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.header .main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.header .main-nav a:hover::after,
+.header .main-nav a:focus::after,
+.header .main-nav li.active a::after {
+    width: 80%;
+}
+.header .main-nav a:hover,
+.header .main-nav a:focus,
+.header .main-nav li.active a {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+}
+
+/* * 4. Barra de Actividad (Activity Bar - biblioteca.html)                * */
+.activity-bar { display: flex; flex-wrap: wrap; padding: 15px 20px; background-color: rgba(255, 255, 255, 0.1); gap: 8px; 
+}
+.activity-item { flex-grow: 1; flex-basis: 0; background-color: rgba(0, 0, 0, 0.3); border: 1px solid #ccc; border-radius: 6px; padding: 10px 15px; text-align: center; font-weight: 500; font-size: 0.95em; color: white; cursor: pointer; transition: background-color 0.3s ease; border-color 0.3s ease; white-space: nowrap; min-width: 100px; font-family: 'Poppins', sans-serif;
+}
+.activity-item:hover { background-color: rgba(255, 255, 255, 0.6); border-color: #bbb; color: black
+}
+.activity-item a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+/* * 5. Contenedores de Contenido Principal y Fondos Específicos por Página * */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.cajacontenedora {
+    padding: 30px;
+    flex-grow: 1;
+    position: relative; /* Necesario para z-index y ::before si se usa localmente */
+}
+
+/* --- Fondos Específicos --- */
+
+/* Home Page */
+body.home-page { /* Aplicar al body para fondo completo */
+    background-image: url('images/dj sunset.avif');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* O scroll */
+}
+.home-page .cajacontenedora { /* Solo estilos de contenido para home */
+    position: relative; /* Para z-index */
+    background-color: transparent !important; /* Hacer transparente */
+    color: #fff; /* Color de texto por defecto para home */
+}
+.home-page .cajacontenedora::before { /* Overlay para home */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* Detrás del contenido */
+    border-radius: inherit;
+}
+.home-page .cajacontenedora > * {
+    position: relative;
+    z-index: 2; /* Encima del overlay */
+}
+.home-page .cajacontenedora h1,
+.home-page .cajacontenedora h2, /* H2 en Home Page es blanco y estático */
+.home-page .cajacontenedora h3,
+.home-page .cajacontenedora p,
+.home-page .cajacontenedora p strong {
+    color: #fff !important; /* Asegurar blanco sobre fondo oscuro */
+}
+.home-page .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
+.home-page .cajacontenedora h2 { /* H2 estático específico de home */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px; margin-bottom: 20px; font-family: 'Montserrat', sans-serif;
+    font-weight: 500; font-size: 1.7em; margin-top: 0; white-space: normal;
+}
+
+/* Page Buscador */
+body#page-buscador { /* Aplicar al body */
+    background-image: url('images/dj produciendo 2.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#page-buscador .cajacontenedora {
+    position: relative;
+    background-color: transparent !important; /* Hacer transparente */
+    flex: 1; display: flex; flex-direction: column;
+}
+#page-buscador .cajacontenedora::before { /* Overlay */
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); z-index: 1; border-radius: inherit;
+}
+#page-buscador .cajacontenedora > *:not(.h2-slider-container) { /* Contenido */
+    position: relative; z-index: 2;
+}
+#page-buscador .cajacontenedora h1, #page-buscador .cajacontenedora h3, #page-buscador .cajacontenedora p, #page-buscador .cajacontenedora p strong {
+    color: #fff; font-family: 'Montserrat', sans-serif;
+}
+#page-buscador .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
+
+body#page-generos { /* Aplicar al body */
+    background-image: url("images/background generos.jpg"); /* Ruta a tu imagen */
+    background-size: cover;
+    background-position: center center; /* Centrado */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fondo fijo */
+    /* background-color: #1a1a1a; */ /* Color de respaldo opcional */
+}
+#page-generos .cajacontenedora {
+    /* Propiedades de fondo eliminadas de aquí */
+    position: relative; /* Mantener para el ::before */
+    background-color: transparent; /*Hacer transparente para ver el fondo del body !! */
+    flex: 1; display: flex; flex-direction: column;
+}
+#page-generos .main-content::before { /* Overlay local para el contenedor */
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Mismo overlay */
+    z-index: 1; /* Detrás del contenido del contenedor */
+    border-radius: inherit;
+}
+#page-generos .cajacontenedora > *:not(.h2-slider-container) { /* Contenido sobre overlay */
+    position: relative;
+    z-index: 2;
+}
+/* Tipografía blanca para contenido en generos */
+#page-generos .cajacontenedora h1, /* H1 ya cubierto antes */
+#page-generos .cajacontenedora h3, #page-generos .cajacontenedora p, #page-generos .cajacontenedora p strong {
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif;
+}
+#page-generos .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
+
+
+/* Page Biblioteca */
+body#page-biblioteca { /* Aplicar al body */
+    background-image: url('images/biblioteca.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#page-biblioteca .cajacontenedora {
+    position: relative;
+    background-color: transparent !important; /* Hacer transparente */
+    flex: 1; display: flex; flex-direction: column;
+}
+#page-biblioteca .cajacontenedora::before { /* Overlay */
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); z-index: 1; border-radius: inherit;
+}
+#page-biblioteca .cajacontenedora > * {
+    position: relative; z-index: 2;
+}
+#page-biblioteca .cajacontenedora h1, #page-biblioteca .cajacontenedora h2, /* Incluir H2 aquí si no es marquesina */
+#page-biblioteca .cajacontenedora h3, #page-biblioteca .cajacontenedora p, #page-biblioteca .cajacontenedora p strong {
+    color: #fff !important;
+}
+#page-biblioteca .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
+#page-biblioteca .cajacontenedora > .search-results-placeholder { padding-top: 0; padding-left: 0; padding-right: 0; }
+
+
+/* Sección general de contenido */
+.content-section {
+    padding: 15px 30px;
+    position: relative; /* Para posible z-index si es necesario */
+    z-index: 2; /* Asegurar que está sobre overlays de body si los hubiera */
+}
+
+/* * 6. Tipografía General (Ajustada para contextos claro/oscuro)          * */
+/* H1 General (Estilos base) */
+h1, .cajacontenedora > h1, .content-section > h1 {
+    margin-top: 0; border-bottom-width: 2px; border-bottom-style: solid;
+    padding-bottom: 10px; margin-bottom: 25px; font-family: 'Montserrat', sans-serif;
+    font-weight: 600; font-size: 2em;
+}
+/* Color H1 por defecto (fondos claros) */
+body:not(.home-page):not([id^='page-']) h1 { /* Aplicar si no tiene fondo específico */
+    color: #333; border-bottom-color: #eee;
+}
+/* Colores H1 para páginas con fondo oscuro ya definidos en sección 5 */
+
+
+/* ---- MARQUESINA H2 (APLICA A TODOS EXCEPTO HOME-PAGE) ---- */
+.h2-slider-container {
+    width: 100%; overflow: hidden; position: relative;
+    margin-top: 0; padding-bottom: 8px; margin-bottom: 20px;
+    z-index: 2; /* Sobre overlays de .cajacontenedora */
+}
+/* Borde marquesina en páginas con fondo oscuro/overlay */
+#page-buscador .h2-slider-container,
+#page-generos .h2-slider-container,
+#page-biblioteca .h2-slider-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* Borde marquesina en páginas con fondo claro */
+body:not(.home-page):not(#page-buscador):not(#page-generos):not(#page-biblioteca) .h2-slider-container {
+    border-bottom: 1px solid #eee;
+}
+.h2-sliding-text-wrapper {
+    display: inline-block; white-space: nowrap;
+    animation: marqueeSlideLeftToRight 15s linear infinite; width: 100%
+}
+/* No animar en home-page (si aparece por error) */
+.home-page .h2-sliding-text-wrapper { animation: none !important; white-space: normal; }
+.home-page .h2-slider-container { overflow: visible; border-bottom: none; }
+.home-page .h2-slider-container .h2-sliding-text-wrapper h2 { display: block; white-space: normal; }
+/* Estilos CADA h2 dentro de la marquesina */
+.h2-sliding-text-wrapper h2 {
+    display: inline-block; margin: 0; padding: 0 15px 0 0; /* Añadido padding derecho para separación */
+    border: none; font-family: 'Montserrat', sans-serif; font-weight: 500;
+    font-size: 1.7em; vertical-align: top;
+}
+/* Color texto marquesina en páginas fondo oscuro */
+#page-buscador .h2-sliding-text-wrapper h2,
+#page-generos .h2-sliding-text-wrapper h2,
+#page-biblioteca .h2-sliding-text-wrapper h2 {
+    color: #fff; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* Color texto marquesina en páginas fondo claro */
+body:not(.home-page):not(#page-buscador):not(#page-generos):not(#page-biblioteca) .h2-sliding-text-wrapper h2 {
+    color: #333; text-shadow: none;
+}
+@keyframes marqueeSlideLeftToRight {
+    0% { transform: translateX(100%); } /* Ajustado inicio */
+    100% { transform: translateX(-100%); } /* Ajustado fin */
+}
+/* ---- FIN MARQUESINA ---- */
+
+/* H2 ESTÁTICOS (SI EXISTEN FUERA DE HOME Y MARQUESINA) */
+h2:not(.home-page h2):not(.h2-sliding-text-wrapper h2),
+.cajacontenedora > h2:not(.home-page .cajacontenedora h2):not(.h2-slider-container h2),
+.content-section > h2:not(.home-page .content-section h2):not(.h2-slider-container h2),
+.search-results-placeholder > h2 { /* Este está oculto */
+    margin-top: 0; padding-bottom: 8px; margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.7em;
+    white-space: normal;
+    /* Color y borde por defecto para fondos claros */
+    color: #333; border-bottom: 1px solid #eee;
+}
+/* Ocultar el H2 "Resultados" de los placeholders */
+.search-results-placeholder > h2:not(.h2-sliding-text-wrapper h2) { display: none; }
+
+
+/* H3 General */
+h3, .cajacontenedora > h3, .content-section > h3 {
+    font-family: 'Poppins', sans-serif; font-weight: 500;
+    margin-top: 30px; margin-bottom: 15px; font-size: 1.5em;
+}
+/* Color H3 por defecto (fondos claros) */
+body:not(.home-page):not([id^='page-']) h3 { color: #333; text-shadow: none; }
+/* Color H3 para páginas con fondo oscuro ya definido en sección 5 */
+
+/* P General */
+p, .cajacontenedora > p, .content-section > p {
+    line-height: 1.6; margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif; font-weight: 400;
+}
+/* Color P por defecto (fondos claros) */
+body:not(.home-page):not([id^='page-']) p { color: #555; text-shadow: none; }
+/* Color P para páginas con fondo oscuro ya definido en sección 5 */
+
+p strong { font-weight: 500; }
+/* Color P strong por defecto (fondos claros) */
+body:not(.home-page):not([id^='page-']) p strong { color: #333; }
+/* Color P strong para páginas con fondo oscuro ya definido en sección 5 */
+
+/* * 7. Ajuste para Elementos Fijos (Header, Nav, Activity Bar)             * */
+:root {
+    --header-height: 60px;
+    --activity-bar-approx-height: 55px; /* Altura aprox barra actividad */
+}
+/* Ajustar scroll-margin-top para que el anclaje funcione bien con header fijo */
+html { scroll-padding-top: var(--header-height); } /* Aplicar al html es más robusto */
+/* Ajuste específico para biblioteca donde hay barra de actividad adicional */
+#page-biblioteca { scroll-padding-top: calc(var(--header-height) + var(--activity-bar-approx-height)); }
+
+/* * 8. Estilos Específicos de Secciones                                    * */
+/* Grid de Géneros */
+.genres-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px; margin-top: 10px; margin-bottom: 0;
+}
+.genre-item {
+    border-radius: 8px; padding: 20px 15px; text-align: center;
+    font-weight: 500; cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); font-family: 'Poppins', sans-serif;
+}
+/* Estilos Genre Item fondo claro */
+body:not([id^='page-']) .genre-item {
+    background-color: #f9f9f9; border: 1px solid #e0e0e0; color: #444;
+}
+body:not([id^='page-']) .genre-item:hover {
+    background-color: #eee; border-color: #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08); transform: translateY(-2px);
+}
+/* Estilos Genre Item fondo oscuro (buscador, generos, biblioteca) */
+#page-buscador .genre-item,
+#page-generos .genre-item,
+#page-biblioteca .genre-item {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    backdrop-filter: blur(2px);
+}
+#page-buscador .genre-item:hover,
+#page-generos .genre-item:hover,
+#page-biblioteca .genre-item:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); transform: translateY(-2px); color: black
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Formulario de búsqueda */
+.search-form {
+    display: flex; gap: 10px; margin-bottom: 10px;
+    align-items: stretch; margin-top: 10px;
+    position: relative; z-index: 2; /* Para estar sobre overlay de .cajacontenedora */
+}
+/* Estilos form fondo claro */
+body:not([id^='page-']) .search-form input[type="text"] {
+    flex-grow: 1; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+body:not([id^='page-']) .search-form input[type="text"]:focus {
+    border-color: #555; outline: none; box-shadow: 0 0 5px rgba(85, 85, 85, 0.3);
+}
+body:not([id^='page-']) .search-form .search-button {
+    padding: 12px 25px; background-color: #555; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; white-space: nowrap;
+}
+body:not([id^='page-']) .search-form .search-button:hover,
+body:not([id^='page-']) .search-form .search-button:focus {
+    background-color: #333; outline: none;
+}
+
+#page-buscador .search-form input[type="text"],
+#page-generos .search-form input[type="text"],
+#page-biblioteca .search-form input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.9); border: none; color: #333;
+    flex-grow: 1; padding: 12px 15px; border-radius: 6px; font-size: 1rem;
+}
+#page-buscador .search-form input[type="text"]::placeholder,
+#page-generos .search-form input[type="text"]::placeholder,
+#page-biblioteca .search-form input[type="text"]::placeholder { color: #777; }
+
+#page-buscador .search-form .search-button,
+#page-generos .search-form .search-button,
+#page-biblioteca .search-form .search-button {
+    background-color: rgba(0, 0, 0, 0.8); border: none; padding: 12px 25px;
+    color: white; border-radius: 6px; font-size: 1rem; cursor: pointer;
+    transition: background-color 0.3s ease; white-space: nowrap;
+}
+#page-buscador .search-form .search-button:hover, #page-buscador .search-form .search-button:focus,
+#page-generos .search-form .search-button:hover, #page-generos .search-form .search-button:focus,
+#page-biblioteca .search-form .search-button:hover, #page-biblioteca .search-form .search-button:focus {
+    background-color: #333; outline: none;
+}
+
+/* Resultados de búsqueda */
+.search-results-placeholder {
+    margin-top: 0; padding-top: 10px;
+    position: relative; z-index: 2; /* Para estar sobre overlay de .cajacontenedora */
+}
+/* Borde resultados fondo claro */
+body:not([id^='page-']) .search-results-placeholder {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;
+}
+/* Borde resultados fondo oscuro */
+#page-buscador .search-results-placeholder,
+#page-generos .search-results-placeholder,
+#page-biblioteca .search-results-placeholder {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 30px; padding-top: 40px;
+}
+
+/* Estilos items resultado fondo claro */
+body:not([id^='page-']) .result-item-placeholder {
+    background-color: #f9f9f9; border: 1px solid #e0e0e0; color: #333;
+    border-radius: 5px; padding: 15px; margin-bottom: 12px; display: flex;
+    justify-content: space-between; align-items: center; flex-wrap: wrap;
+    gap: 10px; width: 100%; box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body:not([id^='page-']) .result-item-placeholder:hover {
+    background-color: #f0f0f0; transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+body:not([id^='page-']) .result-item-placeholder .song-info-placeholder { display: flex; flex-direction: column; gap: 3px; flex-grow: 1; }
+body:not([id^='page-']) .result-item-placeholder .song-title-placeholder { font-weight: 600; color: #333; font-size: 1.05em; font-family: 'Montserrat', sans-serif; }
+body:not([id^='page-']) .result-item-placeholder .song-artist-placeholder { font-size: 0.9em; color: #666; font-family: 'Roboto', sans-serif; }
+body:not([id^='page-']) .result-item-placeholder .song-artist-placeholder em { font-style: italic; color: #777; }
+body:not([id^='page-']) .result-item-placeholder .file-type-placeholder {
+    font-size: 0.85em; color: #888; background-color: #eee; padding: 3px 8px;
+    border-radius: 3px; white-space: nowrap; font-family: 'Poppins', sans-serif; font-weight: 500;
+}
+
+/* Estilos items resultado fondo oscuro (buscador, generos, biblioteca) */
+#page-buscador .result-item-placeholder,
+#page-generos .result-item-placeholder,
+#page-biblioteca .result-item-placeholder {
+    background-color: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff; backdrop-filter: blur(2px); border-radius: 5px; padding: 15px;
+    margin-bottom: 12px; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 10px; width: 100%;
+    box-sizing: border-box; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+#page-buscador .result-item-placeholder:hover,
+#page-generos .result-item-placeholder:hover,
+#page-biblioteca .result-item-placeholder:hover {
+    background-color: rgba(0, 0, 0, 0.65); /* Un poco más oscuro al pasar */
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#page-buscador .result-item-placeholder .song-info-placeholder,
+#page-generos .result-item-placeholder .song-info-placeholder,
+#page-biblioteca .result-item-placeholder .song-info-placeholder { display: flex; flex-direction: column; gap: 3px; flex-grow: 1; }
+#page-buscador .result-item-placeholder .song-title-placeholder,
+#page-generos .result-item-placeholder .song-title-placeholder,
+#page-biblioteca .result-item-placeholder .song-title-placeholder {
+    font-weight: 600; color: #fff; font-size: 1.05em; font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+#page-buscador .result-item-placeholder .song-artist-placeholder,
+#page-generos .result-item-placeholder .song-artist-placeholder,
+#page-biblioteca .result-item-placeholder .song-artist-placeholder {
+    font-size: 0.9em; color: rgba(255, 255, 255, 0.8); font-family: 'Roboto', sans-serif;
+}
+#page-buscador .result-item-placeholder .song-artist-placeholder em,
+#page-generos .result-item-placeholder .song-artist-placeholder em,
+#page-biblioteca .result-item-placeholder .song-artist-placeholder em { font-style: italic; color: rgba(255,255,255,0.7); }
+#page-buscador .result-item-placeholder .file-type-placeholder,
+#page-generos .result-item-placeholder .file-type-placeholder,
+#page-biblioteca .result-item-placeholder .file-type-placeholder {
+    font-size: 0.85em; color: #fff; background-color: rgba(255, 255, 255, 0.2);
+    padding: 3px 8px; border-radius: 3px; white-space: nowrap;
+    font-family: 'Poppins', sans-serif; font-weight: 500;
+}
+
+/* Resultados de actividad (biblioteca) */
+.activity-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; margin: 20px; padding-top: 25px; padding-bottom: 10px; 
+}
+
+.activity-result-item { display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s ease; cursor: default; color: white;
+}
+.activity-result-item:hover .activity-item-image-placeholder { border-color: #bbb; transform: translateY(-2px);
+}
+.activity-result-item:hover .activity-item-text { color: #eee; 
+} 
+/* Texto claro en hover para fondo oscuro */
+.activity-item-image-placeholder { width: 100%; aspect-ratio: 1 / 1; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; margin: 5px; box-sizing: border-box; transition: border-color 0.2s ease, transform 0.2s ease; padding: 5px
+}
+.activity-item-text { font-size: 0.9em; color: rgba(255, 255, 255, 0.8); padding: 0 5px; width: 100%; box-sizing: border-box; transition: color 0.2s ease; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; 
+}
+
+/* Tips */
+.search-tip, .results-tip { margin-top: 25px; font-size: 0.9em; text-align: center; font-style: italic; position: relative; z-index: 2;}
+body:not([id^='page-']) .search-tip, body:not([id^='page-']) .results-tip { color: #777; }
+#page-buscador .search-tip, #page-buscador .results-tip,
+#page-generos .search-tip, #page-generos .results-tip,
+#page-biblioteca .search-tip, #page-biblioteca .results-tip {
+    color: rgba(255,255,255,0.7);
+}
+
+/* * 9. Pie de Página (Footer - Común a TODAS las páginas)                  * */
+footer.footer, footer {
+    padding: 20px 30px;
+    background-color: #333; /* Fondo oscuro consistente */
+    color: #ccc; /* Texto un poco más suave */
+    text-align: center;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    border-top: 1px solid #555;
+    position: relative; /* Para asegurar que no se solape incorrectamente */
+    z-index: 50; /* Por encima de fondos pero debajo de header */
+}
+
+/* * 10. Estilos Responsivos                                                 * */
+
+/* Móviles (< 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+        overflow-x: hidden; /* Evitar scroll horizontal */
+    }
+    .container {
+        width: 100%; margin: 0; border-radius: 0; box-shadow: none; max-width: none;
+    }
+    .header {
+        padding: 0 15px; height: 55px;
+        position: sticky; /* Mantener fijo */
+        --header-height-mobile: 55px; /* Variable para móvil */
+        top: 0; z-index: 100;
+    }
+    html { scroll-padding-top: var(--header-height-mobile); } /* Ajustar anclaje para móvil */
+    #page-biblioteca { scroll-padding-top: calc(var(--header-height-mobile) + var(--activity-bar-approx-height)); } /* Ajuste biblioteca móvil */
+
+    .logo { font-size: 24px; }
+    .icon { display: block; padding: 5px 0; margin-left: auto; }
+
+    .header .main-nav { /* Menú hamburguesa */
+        display: none; /* Oculto por defecto */
+        position: fixed; /* Cambiado a fixed */
+        top: var(--header-height-mobile); /* Debajo del header */
+        left: 0; width: 100%; height: calc(100vh - var(--header-height-mobile)); /* Ocupar resto pantalla */
+        background-color: rgba(0, 0, 0, 0.95); /* Fondo oscuro semi-transparente */
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2); border-top: 1px solid #333;
+        z-index: 99; /* Encima de contenido, debajo de header */
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        overflow-y: auto; /* Permitir scroll si hay muchos ítems */
+    }
+    .header .main-nav.active { display: block; opacity: 1; visibility: visible; }
+    .header .main-nav ul { flex-direction: column; width: 100%; padding: 0; margin: 0; }
+    .header .main-nav li { width: 100%; text-align: center; border-bottom: 1px solid #333; }
+    .header .main-nav li:last-child { border-bottom: none; }
+    .header .main-nav a {
+        padding: 20px; width: 100%; /* Más padding vertical */
+        height: auto; /* Altura automática */
+        justify-content: center; font-size: 1.2em; /* Texto más grande */
+        color: #fff; display: flex; align-items: center; font-weight: 500; letter-spacing: 0.5px;
+    }
+    .header .main-nav a:hover, .header .main-nav a:focus { background-color: rgba(255, 255, 255, 0.1); color: #fff; }
+    .header .main-nav a::after { display: none; } /* Quitar subrayado en móvil */
+
+    .cajacontenedora { padding: 15px; }
+    .content-section { padding: 15px; }
+
+    /* Tipografía móvil */
+    h1, .cajacontenedora > h1, .content-section > h1 { font-size: 1.6em; padding-bottom: 8px; margin-bottom: 20px; }
+    /* H2 Estáticos móvil */
+    h2:not(.home-page h2):not(.h2-sliding-text-wrapper h2),
+    .cajacontenedora > h2:not(.home-page .cajacontenedora h2):not(.h2-slider-container h2),
+    .content-section > h2:not(.home-page .content-section h2):not(.h2-slider-container h2) {
+        font-size: 1.4em; margin-bottom: 15px;
+    }
+    /* H2 Home Page móvil */
+    .home-page .cajacontenedora h2 { font-size: 1.4em; margin-bottom: 15px; }
+    /* Marquesina móvil */
+    .h2-slider-container { margin-bottom: 15px; padding-bottom: 6px; }
+    .h2-sliding-text-wrapper { animation-duration: 10s; } /* Más rápido en móvil */
+    .h2-sliding-text-wrapper h2 { font-size: 1.4em; padding-right: 10px; } /* Menos padding */
+
+    h3, .cajacontenedora > h3, .content-section > h3 { font-size: 1.3em; margin-top: 25px; }
+    p { font-size: 0.95em; line-height: 1.5; }
+
+    /* Formulario búsqueda móvil */
+    .search-form { flex-direction: column; gap: 10px; }
+	#page-buscador .search-form, #page-generos .search-form, #page-biblioteca .search-form {  }
+    .search-form input[type="text"], /* Aplica a todos los inputs */
+    #page-buscador .search-form input[type="text"],
+    #page-generos .search-form input[type="text"],
+    #page-biblioteca .search-form input[type="text"] {
+         width: 100%; box-sizing: border-box; padding: 12px; font-size: 1em;
+    }
+    .search-button, /* Aplica a todos los botones */
+    #page-buscador .search-form .search-button,
+    #page-generos .search-form .search-button,
+    #page-biblioteca .search-form .search-button {
+        width: 100%; box-sizing: border-box; padding: 12px; font-size: 1em;
+    }
+
+    /* Resultados búsqueda móvil */
+    .result-item-placeholder, /* Aplica a todos */
+    #page-buscador .result-item-placeholder,
+    #page-generos .result-item-placeholder,
+    #page-biblioteca .result-item-placeholder {
+        padding: 12px; margin-bottom: 10px; flex-direction: column; align-items: flex-start;
+    }
+    .result-item-placeholder .song-info-placeholder { margin-bottom: 8px; } /* Espacio antes del tipo de archivo */
+    .result-item-placeholder .song-title-placeholder,
+    #page-buscador .result-item-placeholder .song-title-placeholder,
+    #page-generos .result-item-placeholder .song-title-placeholder,
+    #page-biblioteca .result-item-placeholder .song-title-placeholder { font-size: 1em; }
+    .result-item-placeholder .song-artist-placeholder,
+    #page-buscador .result-item-placeholder .song-artist-placeholder,
+    #page-generos .result-item-placeholder .song-artist-placeholder,
+    #page-biblioteca .result-item-placeholder .song-artist-placeholder { font-size: 0.9em; }
+    .result-item-placeholder .file-type-placeholder,
+    #page-buscador .result-item-placeholder .file-type-placeholder,
+    #page-generos .result-item-placeholder .file-type-placeholder,
+    #page-biblioteca .result-item-placeholder .file-type-placeholder {
+        font-size: 0.8em; padding: 2px 6px; align-self: flex-end; /* Alinear a la derecha */
+    }
+
+    /* Grid Géneros móvil */
+    .genres-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
+    .genre-item { padding: 15px 10px; font-size: 0.9em; } /* Más padding vertical */
+
+    /* Barra actividad móvil */
+    .activity-bar { padding: 10px; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; flex-wrap: nowrap; }
+    .activity-bar::-webkit-scrollbar { display: none; }
+    .activity-item { padding: 8px 15px; font-size: 0.9em; min-width: auto; flex-shrink: 0; } /* No min-width fijo, encoger si es necesario */
+
+    /* Resultados actividad móvil */
+    .activity-results-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px 0; }
+    .activity-item-image-placeholder { aspect-ratio: 1; border-radius: 6px; }
+    .activity-item-text { font-size: 0.85em; padding: 5px 0; }
+
+    /* Fondo Home móvil */
+    body.home-page { background-image: url('images/dj sunset 2.webp'); } /* Imagen optimizada */
+    .home-page .cajacontenedora { padding: 20px 15px; }
+    .home-page .cajacontenedora h1 { font-size: 1.8em; margin-bottom: 20px; }
+    .home-page .cajacontenedora h3 { font-size: 1.2em; margin-top: 20px; }
+    .home-page .cajacontenedora p { font-size: 0.95em; margin-bottom: 12px; }
+	
+	body#page-buscador {
+		background-image:url("images/imagen buscador movil.jpg")
+	}
+	
+	body#page-biblioteca {
+		background-image: url("images/imagen biblioteca movil.jpg")
+	}
+	
+	body#page-generos {
+		background-image: url("images/generos movil.jpg")
+	}
+
+    footer.footer, footer { padding: 15px; font-size: 0.9em; }
+}
+
+/* Ajustes adicionales para Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container { max-width: 100%; /* O un valor fijo como 750px */ box-sizing: border-box; }
+    .header { padding: 0 20px; }
+    .header .main-nav a { padding: 0 15px; font-size: 0.9em; } /* Menos padding en enlaces */
+
+    .genres-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .activity-results-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    /* Formulario búsqueda tablet */
+    .search-form,
+    #page-buscador .search-form,
+    #page-generos .search-form,
+    #page-biblioteca .search-form {
+        max-width: 768px; display: flex;  /* Centrar */
+    }
+    /* Marquesina tablet */
+    .h2-sliding-text-wrapper { animation-duration: 10s; }
+
+    /* Ajustar padding general en tablet */
+    .cajacontenedora { padding: 20px; }
+    .content-section { padding: 20px; }
+}
+
+/* Ajustes adicionales generales (fuera de media queries) */
+.content-section { /* Reafirmar padding por defecto */
+    padding: 15px 30px;
+}
+/* Ajustes específicos de padding entre secciones si es necesario */
+#genres-section.content-section {
+    padding-bottom: 5px; /* Menos espacio debajo de géneros */
+}
+#search-results-section.content-section {
+    padding-top: 5px; /* Menos espacio encima de resultados */
+}

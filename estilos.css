@@ -10,9 +10,13 @@ body {
     flex-direction: column;
     background-color: #f0f0f0; /* Fondo por defecto para páginas sin imagen */
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    line-height: 1.4;
+    letter-spacing: 1.3px;
 }
+
 .container {
     flex: 1;
     max-width: 1700px;
@@ -171,7 +175,7 @@ body {
 
 /* Home Page */
 body.home-page { /* Aplicar al body para fondo completo */
-    background-image: url('images/dj sunset.avif');
+    background-image: url('imagenes/dj sunset.avif');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -187,30 +191,53 @@ body.home-page { /* Aplicar al body para fondo completo */
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1; /* Detrás del contenido */
+    z-index: 2; /* Detrás del contenido */
     border-radius: inherit;
 }
 .home-page .cajacontenedora > * {
     position: relative;
     z-index: 2; /* Encima del overlay */
 }
-.home-page .cajacontenedora h1,
-.home-page .cajacontenedora h2, /* H2 en Home Page es blanco y estático */
-.home-page .cajacontenedora h3,
-.home-page .cajacontenedora p,
-.home-page .cajacontenedora p strong {
-    color: #fff !important; /* Asegurar blanco sobre fondo oscuro */
-}
-.home-page .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
-.home-page .cajacontenedora h2 { /* H2 estático específico de home */
+
+.h1home {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 8px; margin-bottom: 20px; font-family: 'Montserrat', sans-serif;
     font-weight: 500; font-size: 1.7em; margin-top: 0; white-space: normal;
 }
 
+input {
+    height: 25px;
+    width: 80%;
+    padding: 7px;
+    margin: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+    border-bottom: whitesmoke;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+
+}
+
+.formulario {
+padding: 30px;
+background-color: #000;
+width: 50%;
+margin: 40px;
+border: 1px solid black;
+border-radius: 15px;
+}
+
+
+h2 {
+    color: #eee;
+    font-family: "Montserrat";
+    text-align: center;
+}
+
 /* Page Buscador */
-body#page-buscador { /* Aplicar al body */
-    background-image: url('images/dj produciendo 2.jpg');
+body .buscador-page { /* Aplicar al body */
+    background-image: url('imagenes/dj produciendo 2.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -234,7 +261,7 @@ body#page-buscador { /* Aplicar al body */
 #page-buscador .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
 
 body#page-generos { /* Aplicar al body */
-    background-image: url("images/background generos.jpg"); /* Ruta a tu imagen */
+    background-image: url("imagenes/background generos.jpg"); /* Ruta a tu imagen */
     background-size: cover;
     background-position: center center; /* Centrado */
     background-repeat: no-repeat;
@@ -269,31 +296,31 @@ body#page-generos { /* Aplicar al body */
 
 
 /* Page Biblioteca */
-body#page-biblioteca { /* Aplicar al body */
-    background-image: url('images/biblioteca.jpg');
+body .actividad-page { /* Aplicar al body */
+    background-image: url('imagenes/biblioteca.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-#page-biblioteca .cajacontenedora {
+.actividad-page .cajacontenedora {
     position: relative;
     background-color: transparent !important; /* Hacer transparente */
     flex: 1; display: flex; flex-direction: column;
 }
-#page-biblioteca .cajacontenedora::before { /* Overlay */
+.actividad-page .cajacontenedora::before { /* Overlay */
     content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
     background-color: rgba(0, 0, 0, 0.4); z-index: 1; border-radius: inherit;
 }
-#page-biblioteca .cajacontenedora > * {
+.actividad-page .cajacontenedora > * {
     position: relative; z-index: 2;
 }
-#page-biblioteca .cajacontenedora h1, #page-biblioteca .cajacontenedora h2, /* Incluir H2 aquí si no es marquesina */
-#page-biblioteca .cajacontenedora h3, #page-biblioteca .cajacontenedora p, #page-biblioteca .cajacontenedora p strong {
+.actividad-page .cajacontenedora h1, #page-biblioteca .cajacontenedora h2, /* Incluir H2 aquí si no es marquesina */
+.actividad-page .cajacontenedora h3, #page-biblioteca .cajacontenedora p, #page-biblioteca .cajacontenedora p strong {
     color: #fff !important;
 }
-#page-biblioteca .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
-#page-biblioteca .cajacontenedora > .search-results-placeholder { padding-top: 0; padding-left: 0; padding-right: 0; }
+.actividad-page .cajacontenedora h1 { border-bottom-color: rgba(255, 255, 255, 0.2); }
+.actividad-page .cajacontenedora > .search-results-placeholder { padding-top: 0; padding-left: 0; padding-right: 0; }
 
 
 /* Sección general de contenido */
@@ -310,15 +337,11 @@ h1, .cajacontenedora > h1, .content-section > h1 {
     padding-bottom: 10px; margin-bottom: 25px; font-family: 'Montserrat', sans-serif;
     font-weight: 600; font-size: 2em;
 }
-/* Color H1 por defecto (fondos claros) */
-body:not(.home-page):not([id^='page-']) h1 { /* Aplicar si no tiene fondo específico */
-    color: #333; border-bottom-color: #eee;
-}
-/* Colores H1 para páginas con fondo oscuro ya definidos en sección 5 */
+
 
 
 /* ---- MARQUESINA H2 (APLICA A TODOS EXCEPTO HOME-PAGE) ---- */
-.h2-slider-container {
+.h1-slider-container {
     width: 100%; overflow: hidden; position: relative;
     margin-top: 0; padding-bottom: 8px; margin-bottom: 20px;
     z-index: 2; /* Sobre overlays de .cajacontenedora */
@@ -347,12 +370,6 @@ body:not(.home-page):not(#page-buscador):not(#page-generos):not(#page-biblioteca
     border: none; font-family: 'Montserrat', sans-serif; font-weight: 500;
     font-size: 1.7em; vertical-align: top;
 }
-/* Color texto marquesina en páginas fondo oscuro */
-#page-buscador .h2-sliding-text-wrapper h2,
-#page-generos .h2-sliding-text-wrapper h2,
-#page-biblioteca .h2-sliding-text-wrapper h2 {
-    color: #fff; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
 /* Color texto marquesina en páginas fondo claro */
 body:not(.home-page):not(#page-buscador):not(#page-generos):not(#page-biblioteca) .h2-sliding-text-wrapper h2 {
     color: #333; text-shadow: none;
@@ -362,21 +379,6 @@ body:not(.home-page):not(#page-buscador):not(#page-generos):not(#page-biblioteca
     100% { transform: translateX(-100%); } /* Ajustado fin */
 }
 /* ---- FIN MARQUESINA ---- */
-
-/* H2 ESTÁTICOS (SI EXISTEN FUERA DE HOME Y MARQUESINA) */
-h2:not(.home-page h2):not(.h2-sliding-text-wrapper h2),
-.cajacontenedora > h2:not(.home-page .cajacontenedora h2):not(.h2-slider-container h2),
-.content-section > h2:not(.home-page .content-section h2):not(.h2-slider-container h2),
-.search-results-placeholder > h2 { /* Este está oculto */
-    margin-top: 0; padding-bottom: 8px; margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.7em;
-    white-space: normal;
-    /* Color y borde por defecto para fondos claros */
-    color: #333; border-bottom: 1px solid #eee;
-}
-/* Ocultar el H2 "Resultados" de los placeholders */
-.search-results-placeholder > h2:not(.h2-sliding-text-wrapper h2) { display: none; }
-
 
 /* H3 General */
 h3, .cajacontenedora > h3, .content-section > h3 {
@@ -734,22 +736,22 @@ footer.footer, footer {
     .activity-item-text { font-size: 0.85em; padding: 5px 0; }
 
     /* Fondo Home móvil */
-    body.home-page { background-image: url('images/dj sunset 2.webp'); } /* Imagen optimizada */
+    body.home-page { background-image: url('imagenes/dj sunset 2.webp'); } /* Imagen optimizada */
     .home-page .cajacontenedora { padding: 20px 15px; }
     .home-page .cajacontenedora h1 { font-size: 1.8em; margin-bottom: 20px; }
     .home-page .cajacontenedora h3 { font-size: 1.2em; margin-top: 20px; }
     .home-page .cajacontenedora p { font-size: 0.95em; margin-bottom: 12px; }
 	
 	body#page-buscador {
-		background-image:url("images/imagen buscador movil.jpg")
+		background-image:url("imagenes/imagen buscador movil.jpg")
 	}
 	
 	body#page-biblioteca {
-		background-image: url("images/imagen biblioteca movil.jpg")
+		background-image: url("imagenes/imagen biblioteca movil.jpg")
 	}
 	
 	body#page-generos {
-		background-image: url("images/generos movil.jpg")
+		background-image: url("imagenes/generos movil.jpg")
 	}
 
     footer.footer, footer { padding: 15px; font-size: 0.9em; }

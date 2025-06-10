@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vybes - Actividades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="/lightbox/dist/css/lightbox.min.css">
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo">Vybes</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="buscador.html">Buscador</a></li>
+          <li><a href="generos.html">Géneros</a></li>
+          <li><a href="biblioteca.html" class="active">Actividad</a></li>
+          <li><a href="login.html">Cuenta</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="abrir menu nav" aria-expanded="false" onclick="toggleMenu()">☰</button>
+      <ul class="main-nav-mobile" style="display: none;">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="buscador.html">Buscador</a></li>
+          <li><a href="generos.html">Géneros</a></li>
+          <li><a href="biblioteca.html" class="active">Actividad</a></li>
+          <li><a href="login.html">Cuenta</a></li>
+      </ul>
+    </header>
+    <div class="form-decorator">
+      <p>TU APOYO A LA COMUNIDAD</p>
+    </div>
+    <main class="main-content">
+      <section class="activity-section">
+        <div class="h1-slider-container">
+          <div class="h1-sliding-text-wrapper">
+          </div>
+          <nav class="activity-bar">
+            <button class="activity-item" data-target="seguidos">SEGUIDOS</button>
+            <button class="activity-item" data-target="likes">LIKES</button>
+            <button class="activity-item" data-target="comentarios">COMENTARIOS</button>
+            <button class="activity-item" data-target="favoritos">FAVORITOS</button>
+            <button class="activity-item" data-target="reposteados">REPOSTEADOS</button>
+          </nav>
+        </div>
+        <section class="activity-sections">
+          <div class="activity-content" id="seguidos">
+            <div class="activity-results-grid">
+              <div class="activity-result-item">
+                <a href="imagenes/usuario1.jpeg" data-lightbox="fotos" alt="Juan López" title="Juan López">
+                  <img src="imagenes/usuario1-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Juan López</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/usuario2.jpeg" data-lightbox="fotos" alt="Camilo Pérez" title="Camilo Pérez">
+                  <img src="imagenes/usuario2-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Camilo Pérez</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/usuario3.jpeg" data-lightbox="fotos" alt="Pedro Gómez" title="Pedro Gómez">
+                  <img src="imagenes/usuario3-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Pedro Gómez</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/usuario4.jpeg" data-lightbox="fotos" alt="Lucía Díaz" title="Lucía Díaz">
+                  <img src="imagenes/usuario4-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Lucía Díaz</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/usuario5.jpeg" data-lightbox="fotos" alt="Carlos Ruiz" title="Carlos Ruiz">
+                  <img src="imagenes/usuario5-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Carlos Ruiz</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="activity-content" id="likes">
+            <div class="activity-results-grid">
+              <div class="activity-result-item">
+                <a href="imagenes/like1.jpeg" data-lightbox="fotos" alt="Healing" title="Healing">
+                  <img src="imagenes/like1-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Healing</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/like2.jpeg" data-lightbox="fotos" alt="Tarantula" title="Tarantula">
+                  <img src="imagenes/like2-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Tarantula</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/like3.jpeg" data-lightbox="fotos" alt="Demand" title="Demand">
+                  <img src="imagenes/like3-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Demand</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/like4.jpeg" data-lightbox="fotos" alt="Realm" title="Realm">
+                  <img src="imagenes/like4-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Realm</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <a href="imagenes/like5.jpeg" data-lightbox="fotos" alt="Yoyo Disco" title="Yoyo Disco">
+                  <img src="imagenes/like5-min.jpeg" class="activity-item-image">
+                </a>
+                <div class="activity-item-text"><strong>Yoyo Disco</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="activity-content" id="comentarios">
+            <div class="activity-results-grid">
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Ana García</strong>: ¡Increíble tema!</div>
+              </div>
+              <div class="activity-result-item">
+          
+                <div class="activity-item-text"><strong>Luis Martínez</strong>: Gran ritmo.</div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Sofía López</strong>: Me encanta esta vibra.</div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Diego Fernández</strong>: Excelente producción.</div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Camila Torres</strong>: ¡Top!</div>
+              </div>
+            </div>
+          </div>
+          <div class="activity-content" id="favoritos">
+            <div class="activity-results-grid">
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Moonlight</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Sunrise</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Nightfall</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Echoes</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Horizon</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="activity-content" id="reposteados">
+            <div class="activity-results-grid">
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Night Vibes</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Urban Beats</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Deep Groove</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Ocean Waves</strong></div>
+              </div>
+              <div class="activity-result-item">
+                <div class="activity-item-text"><strong>Electric Pulse</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <h3>CONTACTO Y SOPORTE</h3>
+        <form id="formulariocontacto" class="footer-form">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu email" required>
+          <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+        <p class="footer-info">contacto@vybes.com | +54 11 1234-5678</p>
+      </div>
+    </footer>
+    <script src="../lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
+    <script>
+
+      function toggleMenu() {
+        const menu = document.querySelector('.main-nav-mobile');
+        const btn = document.querySelector('.hamburger');
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          menu.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.style.display = 'block';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      document.querySelectorAll('.main-nav-mobile a').forEach(link => {
+        link.addEventListener('click', () => {
+          const menu = document.querySelector('.main-nav-mobile');
+          const btn = document.querySelector('.hamburger');
+          menu.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(".activity-item");
+        const contents = document.querySelectorAll(".activity-content");
+        buttons.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const target = document.getElementById(btn.dataset.target);
+            const open = target.classList.contains("active");
+            contents.forEach(c => c.classList.remove("active"));
+            if (!open) target.classList.add("active");
+          });
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('formulariocontacto');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        alert('Gracias por tu mensaje, nos pondremos en contacto contigo!');
+        
+        form.submit();
+      });
+  });
+
+    </script>
+  </body>
+</html>

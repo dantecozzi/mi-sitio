@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vybes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo">Vybes</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="buscador.html">Buscador</a></li>
+          <li><a href="generos.html">Géneros</a></li>
+          <li><a href="biblioteca.html">Actividad</a></li>
+          <li><a href="login.html">Cuenta</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" aria-label="abrir menu nav" aria-expanded="false" onclick="toggleMenu()">☰</button>
+      <ul class="main-nav-mobile" style="display: none;">
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="buscador.html">Buscador</a></li>
+          <li><a href="generos.html">Géneros</a></li>
+          <li><a href="biblioteca.html">Actividad</a></li>
+          <li><a href="login.html">Cuenta</a></li>
+      </ul>
+    </header>
+    <div class="form-decorator">
+      <p>TU VIAJE MUSICAL EMPIEZA AQUÍ</p>
+    </div>
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>BIENVENIDO A "VYBES"</h1>
+          <h2>La plataforma donde tu música encuentra su hogar y tu talento toma el protagonismo</h2>
+        </div>
+      </section>
+      <section class="features">
+        <div class="feature">
+          <h3>Eres músico?</h3>
+          <p>Comparte tus tracks sin barreras y recibe feedback real de una comunidad apasionada.</p>
+        </div>
+        <div class="feature">
+          <h3>Eres amante de la música?</h3>
+          <p>Descubre joyas ocultas, apoya a emergentes y presume “yo lo escuché primero”.</p>
+        </div>
+        <div class="feature">
+          <h3>Eres productor?</h3>
+          <p>Explora talento crudo antes de las tendencias y encuentra el próximo gran nombre.</p>
+        </div>
+      </section>
+      <section class="anuncio-section">
+        <div class="anuncio-contenido">
+          <iframe class="anuncio" src="https://juansegior.github.io/Enfiestate/anuncio.html" width="100%" name="marco" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <h3>CONTACTO Y SOPORTE</h3>
+        <form id="formulariocontacto" class="footer-form">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu email" required>
+          <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+        <p class="footer-info">contacto@vybes.com | +54 11 1234-5678</p>
+      </div>
+    </footer>
+    <script>
+
+      function toggleMenu() {
+        const menu = document.querySelector('.main-nav-mobile');
+        const btn = document.querySelector('.hamburger');
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          menu.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          menu.style.display = 'block';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      document.querySelectorAll('.main-nav-mobile a').forEach(link => {
+        link.addEventListener('click', () => {
+          const menu = document.querySelector('.main-nav-mobile');
+          const btn = document.querySelector('.hamburger');
+          menu.style.display = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('formulariocontacto');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        alert('Gracias por tu mensaje, nos pondremos en contacto contigo!');
+        
+        form.submit();
+      });
+  });
+
+    </script>
+  </body>
+</html>

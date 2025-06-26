@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentación Final Vybes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Import Montserrat y Orbitron */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;500;600;700&display=swap');
+    /* --------------------------------------------------
+       1. VARIABLES Y RESET
+    -------------------------------------------------- */
+    :root {
+      --bg-page: #f0f0f0;
+      --bg-header: #000;
+      --text-light: #fff;
+      --text-muted: #eee;
+      --accent: #666;
+      --font-body: 'Montserrat', sans-serif;
+      --font-logo: 'Orbitron', sans-serif;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{width:100%;height:100%;background:#000;overflow:hidden;}
+
+    /* --------------------------------------------------
+       2. ESTILOS GENERALES DE LA PRESENTACIÓN
+    -------------------------------------------------- */
+    .logo {
+      font-family: var(--font-logo);
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:#fff;
+      position:relative;
+      text-shadow:0 0 10px rgba(255,255,255,.5),0 0 20px rgba(255,255,255,.3);
+      font-size:6rem;
+      margin-bottom:2rem;
+    }
+    .logo::after{content:'';position:absolute;bottom:-6px;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,#fff,transparent);animation:glow 3s linear infinite;}
+    @keyframes glow{0%,100%{opacity:.5;}50%{opacity:1;}}
+
+    h1{
+      font-family:var(--font-logo);
+      font-weight:700;font-size:3rem;text-transform:uppercase;
+      position:relative;color:#fff;letter-spacing:2px;
+      text-shadow:0 0 10px rgba(255,255,255,.3),0 0 20px rgba(255,255,255,.1);
+    }
+    h1::after{content:'';position:absolute;bottom:-6px;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#fff,transparent);animation:glow 3s linear infinite;}
+
+    #slide1 p{position:absolute;bottom:20%;left:50%;transform:translateX(-50%);color:#ccc;font-size:1rem;line-height:1.7;font-family:var(--font-body);text-align:center;}
+
+    /* Slide 2 */
+    #slide2{display:flex;flex-direction:column;align-items:center;padding-top:8vh;text-align:left;}
+    .contenido-slide2{margin-top:10vh;width:70vw;}
+    .lista-slide{list-style:none;margin-top:2rem;font-size:1.6rem;color:#eee;}
+    .lista-slide li{display:flex;align-items:center;margin-bottom:3rem;font-family:var(--font-body);}
+    .lista-slide li i{font-size:2rem;margin-right:1.5rem;color:#0af;}
+
+    /* Slide 3 – layout contenido */
+    .texto-slide3{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;width:80%;margin:0 auto;font-family:var(--font-body);color:#fff;font-size:1.2rem;line-height:1.4;text-align:left;}
+    .feature{flex:1 1 45%;background:rgba(249,249,249,.05);padding:40px 24px 24px 24px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1);}    
+    .lista-slide3{margin-left:1.5rem;}
+
+    /* --------------------------------------------------
+       3. NAV DEMO (INSIDE SLIDE 3)
+    -------------------------------------------------- */
+    .demo-header{display:flex;align-items:stretch;justify-content:space-between;padding:0 30px;background:var(--bg-header);color:var(--text-light);height:80px;border-radius:8px;width:100%;max-width:900px;margin:3rem auto 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.3);}
+    .demo-logo{display:flex;align-items:center;font:700 26px/1 var(--font-logo);text-transform:uppercase;letter-spacing:2px;color:var(--text-light);position:relative;text-decoration:none;border:none;}
+    .demo-logo::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--text-light),transparent);animation:glow 2s linear infinite;}
+
+    .demo-main-nav{display:flex;align-items:stretch;margin-left:auto;font:600 1rem var(--font-body);}
+    .demo-main-nav ul{display:flex;list-style:none;height:100%;}
+    .demo-main-nav li{display:flex;height:100%;}
+    .demo-main-nav a{display:flex;align-items:center;justify-content:center;padding:0 25px;height:100%;color:var(--text-light);text-decoration:none;position:relative;transition:background-color .3s,color .3s;}
+    .demo-main-nav a:hover,.demo-main-nav a:focus,.demo-main-nav li.active a{background:rgba(255,255,255,.1);}
+    .demo-main-nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#fff;transition:width .3s;transform:translateX(-50%);}    
+    .demo-main-nav a:hover::after,.demo-main-nav li.active a::after{width:80%;}
+
+    /* Mobile menu */
+    .demo-hamburger{display:none;font-size:30px;cursor:pointer;background:none;border:none;color:#fff;}
+    .demo-main-nav-mobile{display:none;position:absolute;top:80px;right:0;width:60%;max-width:300px;background:rgba(0,0,0,.95);z-index:20;}
+    .demo-main-nav-mobile ul{display:flex;flex-direction:column;list-style:none;margin:0;padding:0;}
+    .demo-main-nav-mobile li{display:flex;height:60px;width:100%;}
+    .demo-main-nav-mobile a{display:flex;align-items:center;justify-content:flex-end;padding:0 25px;width:100%;color:var(--text-light);text-decoration:none;transition:background-color .3s;}
+    .demo-main-nav-mobile a:hover{background:rgba(255,255,255,.1);}    
+    .demo-main-nav-mobile a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#fff;transition:width .3s;transform:translateX(-50%);}    
+    .demo-main-nav-mobile a:hover::after{width:80%;}
+
+   .wireframes-container {display: flex;justify-content: center;align-items: flex-start;gap: 2rem;margin-top: 3rem;flex-wrap: wrap;max-width: 95vw;}
+    .wireframes-container img {height: 500px;width: auto;border-radius: 8px;box-shadow: 0 0 15px rgba(255,255,255,0.2);object-fit: contain;}
+
+    .wireframe-item {display: flex;flex-direction: column;align-items: center;}
+  .wireframe-title {
+    margin-bottom: 1rem;font-family: 'Montserrat', sans-serif;color: white;font-size: 1.5rem;text-align: center;}
+
+    /* --------------------------------------------------
+       4. SLIDER, BOTONES Y RESPONSIVE
+    -------------------------------------------------- */
+    .slider{position:fixed;top:0;left:0;width:100vw;height:100vh;overflow:hidden;}
+    .slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:2rem;padding-top:10vh;color:#fff;text-align:center;overflow:hidden;transition:transform .5s;}
+    .slide::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.8);z-index:1;}
+    .slide>*{position:relative;z-index:2;}
+    #slide1{justify-content:center;padding-top:0;}
+    #slide9{justify-content:center;padding-top:0;}
+
+    /* Fondos */
+    #slide1{background:#111;}  #slide2{background:url('imagenes/background-generos.jpg') center/cover no-repeat;} #slide3{background:url('imagenes/biblioteca.jpg') center/cover no-repeat;} #slide4{background:url('imagenes/foto google 5.jpg') center/cover no-repeat;} #slide5{background:url('imagenes/dj-produciendo-2.jpg') center/cover no-repeat;}    #slide6{background:url('imagenes/dj-sunset.avif') center/cover no-repeat;}    #slide7{background:url('imagenes/fondo-generos.avif') center/cover no-repeat;}    #slide8{background:url('imagenes/foto google 6.jpg') center/cover no-repeat;}    #slide9{background:url('imagenes/dj-produciendo.avif') center/cover no-repeat;}
+
+    /* Flechas */
+    .prev,.next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;font-size:2rem;padding:.5rem;cursor:pointer;z-index:10;border-radius:.8rem;transition:background .3s,color .3s,transform .3s;}
+    .prev{left:1rem;} .next{right:1rem;}
+    .prev:hover,.next:hover{background:rgba(255,255,255,.5);color:#000;transform:translateY(-50%) scale(1.2);}
+
+/* Slide 5 */
+
+    #slide5 {display:flex; flex-direction:column; align-items:center;justify-content:flex-start; padding-top:10vh;gap: 2rem;}
+    .design-overlay-box {background: rgba(255,255,255,0.1);padding: 2rem;border-radius: 12px;max-width: 500px;width: 90%;color: white;font-family: 'Montserrat', sans-serif;box-shadow: 0 0 20px rgba(0,0,0,0.3);backdrop-filter: blur(5px);text-align: center;}
+    .design-container {display: flex;flex-direction: column;gap: 2rem;align-items: center;margin-top: 1rem;}
+    .palette-section h4 {margin-top: 1rem;font-size: 1.2rem;}
+    .color-boxes {display: flex;justify-content: center;gap: 1rem;margin: 0.5rem 0 1rem;}
+    .color-swatch {width: 40px;height: 40px;border-radius: 6px;border: 1px solid #fff;}
+  .palette-box{max-width:1000px;width:95%;}
+.palette-row{display:flex;gap:2rem;justify-content:center;flex-wrap:nowrap;padding: 24px 12px 12px 12px;}
+.palette-col{display:flex;flex-direction:column;align-items:center;gap:0.5rem;}
+.palette-col h4{margin:0;font-size:1rem;}
+.color-swatch{width:120px;height:100px;border-radius:8px;border:none;display:flex;align-items:center;justify-content:center;position:relative;font-size:0.75rem;font-weight:bold;text-shadow:0 0 4px rgba(0,0,0,0.5);}
+.color-swatch span{pointer-events:none;}
+
+/* Tipografías (Slide 5) */
+    .typography-box { max-width:800px; width:95%; background: rgba(255,255,255,0.1); padding:2rem; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter: blur(5px); color:#fff; }
+    .typography-box h3 { margin-bottom:1rem; font-size:1.2rem; }
+    .typography-row { display:flex; justify-content:center; gap:4rem; }
+    .font-item { font-size:1.5rem; }
+    .orbitron-font { font-family: 'Orbitron', sans-serif; font-weight: 700;} 
+    .montserrat-font { font-family: 'Montserrat', sans-serif; }
+    
+/* Slide 6: Footer */
+    #slide6 {display: flex;flex-direction: column;align-items: center;justify-content: flex-start;padding: 2rem;padding-top: 10vh;}
+    .footer-slide {width: 100%;max-width: 700px;margin-top: calc(20vh - 100px);}
+    .footer {background: #000;color: #fff;padding: 32px;}
+    .footer-content {max-width: 700px;margin: 0 auto;text-align: center;padding-bottom: 25px;}
+    .footer-content h3 {font-size: 1.4rem;margin-bottom: 15px;font-family: 'Montserrat', sans-serif;}
+    .footer-form {display: flex;flex-direction: column;gap: 15px;margin-bottom: 20px;}
+    .footer-form input,
+    .footer-form textarea,
+    .footer-form button {width: 100%;padding: 10px 12px;font-size: 1rem;border: 1px solid #444;border-radius: 6px;background: #1a1a1a;color: #fff;transition: border-color 0.2s;}
+    .footer-form input:focus,
+    .footer-form textarea:focus {border-color: #444;outline: none;}
+    .footer-form textarea {height: 100px;resize: vertical;}
+    .footer-form button {padding: 8px 16px;font-size: 0.9rem;font-weight: 600;border: none;background: #646464;color: #1e1e1e;cursor: pointer;transition: background 0.2s ease, transform 0.2s ease;}
+    .footer-form button:hover {background: #909090;transform: translateY(-1px);}
+    .footer-info {font-size: 1rem;color: #fff;font-weight: 200;font-family: 'Montserrat', sans-serif;font-weight: 200;}
+
+    /* Slide 7: Resultado final */
+    #slide7 {display: flex;flex-direction: column;align-items: center;justify-content: flex-start;padding: 10vh 2rem 2rem;text-align: justify;}
+    #slide7 h1 {margin-bottom: 2rem;}
+    #slide7 .resultado-texto {max-width: 800px;font-family: 'Montserrat', sans-serif;font-size: 1.6rem;color: #fff;text-align: justify;}
+
+ .result-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-top: 24px;
+    }
+    .result-images img {
+      max-width: 45%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .result-images-tablet {
+      display: none;
+    }
+
+    .result-images-mobile {
+      display: none;
+    }
+
+     .presupuesto-totales {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      font-size: 1.6rem;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0 1rem;
+    }
+
+    .visit-btn {
+  padding: 24px 32px;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  background-color: rgba(249,249,249,.3);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  margin-top: 2rem;
+}
+
+.visit-btn:hover {
+  background-color: #0af;
+  color: #fff;
+  transform: scale(1.10);
+}
+
+    /* Tablet y pantallas medianas */
+@media (max-width: 768px) {
+  .logo {font-size: 4.5rem;}
+  h1 {font-size: 2.2rem;}
+  .contenido-slide2 {width: 80vw;}
+  .lista-slide {font-size: 1.2rem;}
+  .texto-slide3 {width: 90%;gap: 1rem;}
+  .feature {flex: 1 1 calc(45% - 1rem);padding: 1rem;font-size: 0.9rem;}
+  .demo-main-nav {display: none;}
+  .demo-header {margin-top: 0.5rem;}
+  .demo-hamburger {display: block;}
+   .wireframes-container {flex-direction: column; align-items: center;}
+  .wireframes-container img {height: 200px;width: auto;}
+    .palette-row {flex-direction: row;gap: 1rem;}
+  .palette-col h4 {font-size: 0.9rem;}
+  .color-swatch {width: 90px;height: 75px;font-size: 0.7rem;}
+    .typography-row {flex-direction: row;gap: 2rem; }
+    .font-item {font-size: 1.2rem;}
+   #slide7 .resultado-texto {font-size: 1rem; padding: 0 1rem;}
+  .result-images {display: none;}
+ .result-images-tablet {display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;margin-top: 3rem;}
+.result-images-mobile {display: none;}
+.result-images-tablet img {height: 240px;max-width: 90%;object-fit: contain; border-radius: 8px;box-shadow: 0 0 15px rgba(0,0,0,0.4);}
+ .presupuesto-totales {font-size: 1.2rem;}
+  .visit-btn {font-size: 1.5rem;padding: 10px 20px;}
+}
+/* Móviles y pantallas pequeñas */
+@media (max-width: 480px) { 
+  .logo {font-size: 4rem;margin-bottom: 1rem;}
+  h1 {font-size: 2rem;}
+  .contenido-slide2 { width: 90vw;}
+  .lista-slide { font-size: 1rem;}
+  .texto-slide3 { width: 100%;gap: 0.5rem;}
+  .feature { flex: 1 1 calc(45% - 0.5rem);padding: 0.8rem;font-size: 0.85rem;}
+  .demo-main-nav-mobile { width: 100%;}
+  .demo-header {margin-top: 0.5rem;}
+  .wireframes-container img {height: 200px;}
+   .palette-row {flex-direction: row;flex-wrap: wrap;gap: 1rem;}
+  .palette-col h4 {font-size: 0.85rem;}
+  .color-swatch {width: 80px;height: 50px;font-size: 0.65rem;}
+  .typography-row {flex-direction: row;gap: 1rem;}
+  .font-item {font-size: 1rem;}
+   #slide7 .resultado-texto {font-size: 1rem;padding: 0 1rem;}
+.result-images-tablet {display: none;}
+.result-images,
+.resultado-imgs-tablet { display: none; }
+.result-images-mobile {display: flex ;flex-direction: row;justify-content: center;align-items: center;gap: 1rem;flex-wrap: nowrap;margin-top: 2rem;}
+.result-images-mobile img {max-width: 45%;height: auto;object-fit: contain;border-radius: 8px;box-shadow: 0 0 15px rgba(0,0,0,0.4);}
+.presupuesto-totales {font-size: 1rem;}
+ .visit-btn {font-size: 1rem;padding: 10px 18px;}
+}
+
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slide" id="slide1">
+      <h1 class="logo">VYBES</h1>
+      <p>Alumno: Dante García Cozzi<br>Profesor: Wenceslao Ignacio Zavala<br>Materia: Producción Digital I</p>
+    </div>
+<div class="slide" id="slide2">
+  <h1>¿QUÉ ES VYBES?</h1>
+  <div class="contenido-slide2">
+    <ul class="lista-slide">
+  <li><i class="fas fa-cloud-arrow-up"></i> Una plataforma para subir y descargar música electrónica.</li>
+  <li><i class="fas fa-ban"></i> Sin intermediarios, cuotas ni privilegios.</li>
+  <li><i class="fas fa-users"></i> Contenido creado por la comunidad, para la comunidad.</li>
+  <li><i class="fas fa-network-wired"></i> Funciones de red social que fomentan el apoyo, la visibilidad y la comunicación.</li>
+</ul>
+  </div>
+</div>
+
+    <div class="slide" id="slide3">
+  <h1>ARQUITECTURA</h1>
+  <section class="texto-slide3">
+    <div class="feature">
+      <h3>Interfaz (UI)</h3>
+      <p>La interfaz se divide en tres bloques principales:</p>
+      <ol class="lista-slide3">
+        <li>Header con logo y menú de navegación.</li>
+        <li>Zona central con contenido principal: buscador, listado de géneros, actividad.</li>
+        <li>Footer con enlaces de cuenta y contacto.</li>
+      </ol>
+    </div>
+    <div class="feature">
+      <h3>Navegabilidad (UX)</h3>
+      <p>El sitio cuenta con cinco secciones. En cada una de ellas, el usuario puede desempeñar una función distinta.</p>
+    </div>
+  </section>
+
+  <!-- Barra de navegación demo insertada debajo -->
+  <header class="demo-header">
+    <a href="index.html" class="demo-logo">Vybes</a>
+    <nav class="demo-main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="buscador.html">Buscador</a></li>
+        <li><a href="generos.html">Géneros</a></li>
+        <li><a href="biblioteca.html">Actividad</a></li>
+        <li><a href="login.html">Cuenta</a></li>
+      </ul>
+    </nav>
+    <button class="demo-hamburger" aria-label="abrir menu nav" aria-expanded="false" onclick="toggleDemoMenu()">☰</button>
+    <nav class="demo-main-nav-mobile" id="demo-mobile-menu">
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="buscador.html">Buscador</a></li>
+        <li><a href="generos.html">Géneros</a></li>
+        <li><a href="biblioteca.html">Actividad</a></li>
+        <li><a href="login.html">Cuenta</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<script>
+  function toggleDemoMenu() {
+    const menu = document.getElementById('demo-mobile-menu');
+    const isVisible = window.getComputedStyle(menu).display !== 'none';
+    menu.style.display = isVisible ? 'none' : 'block';
+  }
+</script>
+
+    <div class="slide" id="slide4">
+      <h1>WIREFRAMES</h1>
+      <div class="wireframes-container">
+         <div class="wireframe-item">
+    <h3 class="wireframe-title">Desktop</h3>
+        <img src="imagenes/Wireframe Vybes desktop.jpg">
+         </div>
+         <div class="wireframe-item">
+    <h3 class="wireframe-title">Mobile</h3>
+        <img src="imagenes/Wireframe Vybes mobile.jpg">
+         </div>
+      </div>
+    </div>
+   <div class="slide" id="slide5">
+      <h1>DISEÑO</h1>
+      <div class="design-container">
+        <div class="design-overlay-box palette-box">
+          <h3>Paleta cromática</h3>
+          <div class="palette-row">
+            <div class="palette-col">
+              <h4>Negros</h4>
+              <div class="color-swatch" style="background:#000000;"><span>#000000</span></div>
+              <div class="color-swatch" style="background:#1E1E1E;"><span>#1E1E1E</span></div>
+            </div>
+            <div class="palette-col">
+              <h4>Grises</h4>
+              <div class="color-swatch" style="background:#333333;"><span>#333333</span></div>
+              <div class="color-swatch" style="background:#666666;"><span>#666666</span></div>
+            </div>
+            <div class="palette-col">
+              <h4>Blancos</h4>
+              <div class="color-swatch" style="background:#ececec; color:#000;"><span>#ECECEC</span></div>
+              <div class="color-swatch" style="background:#ffffff; color:#000;"><span>#FFFFFF</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="design-overlay-box typography-box">
+  <h3>Tipografías</h3>
+  <div class="typography-row">
+    <div class="font-item orbitron-font">
+      Orbitron
+    </div>
+    <div class="font-item montserrat-font">
+      Montserrat
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+    <div class="slide" id="slide6">
+      <h1>FOOTER</h1>
+      <div class="footer-slide">
+        <footer class="footer">
+          <div class="footer-content">
+            <h3>CONTACTO Y SOPORTE</h3>
+            <form id="formulariocontacto" class="footer-form">
+              <input type="text" name="nombre" placeholder="Tu nombre" required>
+              <input type="email" name="email" placeholder="Tu email" required>
+              <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+              <button type="submit">Enviar</button>
+            </form>
+            <p class="footer-info">contacto@vybes.com | +54 11 1234-5678</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="slide" id="slide7">
+      <h1>RESULTADO FINAL</h1>
+      <p class="resultado-texto">
+        Si bien empezó siendo un trabajo académico para una materia, el proyecto logró atraparme y hoy es una idea que pienso seguir desarrollando en el futuro.
+      </p>
+      <div class="result-images">
+        <img src="imagenes/Inicio desktop.png">
+        <img src="imagenes/Actividad deskop.png">
+      </div>
+       <div class="result-images-tablet">
+        <img src="imagenes/Inicio Tablet.png">
+        <img src="imagenes/Actividad Tablet.png">
+      </div>
+      <div class="result-images-mobile">
+      <img src="imagenes/Buscador mobile.png">
+      <img src="imagenes/Cuenta mobile.png">
+      </div>
+    </div>
+    </div>
+
+    </div>
+   <div class="slide" id="slide8">
+      <h1>PRESUPUESTO</h1>
+      <div class="contenido-slide2">
+        <ul class="lista-slide">
+          <li><i class="fas fa-sitemap"></i> Diseño de Información: $140.000</li>
+          <li><i class="fas fa-pencil-ruler"></i> Diseño Visual (UI/UX): $100.000</li>
+          <li><i class="fas fa-code"></i> Desarrollo Web (HTML, CSS, JS): $105.000</li>
+          <li><i class="fas fa-server"></i> Hosting (Towebs – básico): $2.600 / mes</li>
+          <li><i class="fas fa-globe"></i> Dominio .com.ar: $5.000 / año</li>
+        </ul>
+         <div class="presupuesto-totales">
+          <p>Total primer mes: <strong>$347.600</strong></p>
+          <p>Total primer año: <strong>$381.200</strong></p>
+        </div>
+      </div>
+
+      </div>
+    <div class="slide" id="slide9">
+     <button class="visit-btn" onclick="window.location='https://dantecozzi.github.io/mi-sitio/';">Visitar la página</button>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+
+  <footer style="position:fixed; bottom:0; width:100%; text-align:center; background:#000; color:#fff; padding:0.5rem;">
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function updateSlides() { slides.forEach((s,i)=>s.style.transform=`translateX(${(i-current)*100}vw)`); }
+    document.querySelector('.next').addEventListener('click',()=>{current=(current+1)%slides.length;updateSlides();});
+    document.querySelector('.prev').addEventListener('click',()=>{current=(current-1+slides.length)%slides.length;updateSlides();});
+    updateSlides();
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('formulariocontacto');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        alert('Gracias por tu mensaje, nos pondremos en contacto contigo!');
+        
+        form.submit();
+      });
+  });
+
+  </script>
+</body>
+</html>

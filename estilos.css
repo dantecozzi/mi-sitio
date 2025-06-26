@@ -1,7 +1,7 @@
 /* Navegación principal */
 
 :root {
-  --bg-page: #f0f0f0;
+  --bg-page: #ececec;
   --bg-header: #000;
   --text-light: #fff;
   --text-muted: #eee;
@@ -504,7 +504,7 @@ section#search-results-section {
 
 .file-type-placeholder {
   font: 500 0.75rem 'Montserrat', sans-serif;
-  color: #555;
+  color: #666666;
   background: #eee;
   padding: 2px 8px;
   border-radius: 4px;
@@ -544,7 +544,7 @@ section#search-results-section {
 .activity-item {
   flex: 1;
   padding: 14px 20px;
-  background: #2a2a2a;
+  background: #333;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -860,6 +860,15 @@ iframe.anuncio {
   margin: 0;
   color: #fff;
   font-weight: 200;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-link:hover {
+  color: violet;
 }
 
 /* Anuncio Vybes */
